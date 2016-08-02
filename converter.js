@@ -8,7 +8,14 @@ var clearButton = document.getElementById("clear");
 submitButton.addEventListener("click", buttonFunction);
 toCelsius.addEventListener("checked", celsiusFunction);
 toFahrenheit.addEventListener("checked", fahrenheitFunction);
+clearButton.addEventListener("click", clearButtonFunction);
 
+
+function clearButtonFunction() {
+  console.log("clear checked");
+  userInput.value = "";
+  document.getElementById("output").innerHTML = "";
+}
 
 function buttonFunction() {
   if (document.getElementById("toCelsius").checked) {
@@ -19,7 +26,6 @@ function buttonFunction() {
     console.log("fahrenheit checked");
   }
 }
-
 
 var userInput = document.getElementById("userInput");
 
@@ -37,6 +43,13 @@ function celsiusFunction() {
   var celsiusEquation = ((inputVariable - 32) / 1.8);
   console.log(celsiusEquation);
   document.getElementById("output").innerHTML = celsiusEquation;
+  if (celsiusEquation >= 32) {
+    document.getElementById("output").style.color = "red";
+  } else if (celsiusEquation <= 0) {
+    document.getElementById("output").style.color = "blue";
+  } else {
+    document.getElementById("output").style.color = "green";
+  }
 }
 
 
@@ -46,7 +59,24 @@ function fahrenheitFunction() {
   var fahrenheitEquation = ((inputVariable * 1.8) + 32);
   console.log(fahrenheitEquation);
   document.getElementById("output").innerHTML = fahrenheitEquation;
+  if (fahrenheitEquation >= 90) {
+    document.getElementById("output").style.color = "red";
+  } else if (fahrenheitEquation <= 32) {
+    document.getElementById("output").style.color = "blue";
+  } else {
+    document.getElementById("output").style.color = "green";
+  }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
